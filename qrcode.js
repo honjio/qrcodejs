@@ -7,6 +7,11 @@
  * @author davidshimjs
  * @see <a href="http://www.d-project.com/" target="_blank">http://www.d-project.com/</a>
  * @see <a href="http://jeromeetienne.github.com/jquery-qrcode/" target="_blank">http://jeromeetienne.github.com/jquery-qrcode/</a>
+ * 
+ * @author fujino-yuki
+ * The origin author is davidshimjs.
+ * Added minor changes for code export.
+ * @see https://github.com/honjio/qrcodejs/commit/92900573fad7a79dcb95956aaf8c251d51de6e02
  */
 export default function () {
     let QRCode;
