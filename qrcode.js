@@ -3,14 +3,13 @@
  * - Using the 'QRCode for Javascript library'
  * - Fixed dataset of 'QRCode for Javascript library' for support full-spec.
  * - this library has no dependencies.
- * 
+ *
  * @author davidshimjs
  * @see <a href="http://www.d-project.com/" target="_blank">http://www.d-project.com/</a>
  * @see <a href="http://jeromeetienne.github.com/jquery-qrcode/" target="_blank">http://jeromeetienne.github.com/jquery-qrcode/</a>
  */
-var QRCode;
-
-(function () {
+export default function () {
+    let QRCode;
     //---------------------------------------------------------------------
     // QRCode for JavaScript
     //
@@ -21,7 +20,7 @@ var QRCode;
     // Licensed under the MIT license:
     //   http://www.opensource.org/licenses/mit-license.php
     //
-    // The word "QR Code" is registered trademark of 
+    // The word "QR Code" is registered trademark of
     // DENSO WAVE INCORPORATED
     //   http://www.denso-wave.com/qrcode/faqpatent-e.html
     //
@@ -316,7 +315,7 @@ var QRCode;
 
         /**
          * Draw the QRCode
-         * 
+         *
          * @param {QRCode} oQRCode
          */
         Drawing.prototype.draw = function (oQRCode) {
@@ -367,7 +366,7 @@ var QRCode;
 
         // Android 2.1 bug workaround
         // http://code.google.com/p/android/issues/detail?id=5141
-        if (this._android && this._android <= 2.1) {
+        if (window._android && window._android <= 2.1) {
             var factor = 1 / window.devicePixelRatio;
             var drawImage = CanvasRenderingContext2D.prototype.drawImage;
             CanvasRenderingContext2D.prototype.drawImage = function (image, sx, sy, sw, sh, dx, dy, dw, dh) {
@@ -388,7 +387,7 @@ var QRCode;
 
         /**
          * Check whether the user's browser supports Data URI or not
-         * 
+         *
          * @private
          * @param {Function} fSuccess Occurs if it supports Data URI
          * @param {Function} fFail Occurs if it doesn't support Data URI
@@ -430,10 +429,10 @@ var QRCode;
 
         /**
          * Drawing QRCode by using canvas
-         * 
+         *
          * @constructor
          * @param {HTMLElement} el
-         * @param {Object} htOption QRCode Options 
+         * @param {Object} htOption QRCode Options
          */
         var Drawing = function (el, htOption) {
             this._bIsPainted = false;
@@ -456,8 +455,8 @@ var QRCode;
 
         /**
          * Draw the QRCode
-         * 
-         * @param {QRCode} oQRCode 
+         *
+         * @param {QRCode} oQRCode
          */
         Drawing.prototype.draw = function (oQRCode) {
             var _elImage = this._elImage;
@@ -514,7 +513,7 @@ var QRCode;
 
         /**
          * Return whether the QRCode is painted or not
-         * 
+         *
          * @return {Boolean}
          */
         Drawing.prototype.isPainted = function () {
@@ -546,7 +545,7 @@ var QRCode;
 
     /**
      * Get the type by string length
-     * 
+     *
      * @private
      * @param {String} sText
      * @param {Number} nCorrectLevel
@@ -596,7 +595,7 @@ var QRCode;
     /**
      * @class QRCode
      * @constructor
-     * @example 
+     * @example
      * new QRCode(document.getElementById("test"), "http://jindo.dev.naver.com/collie");
      *
      * @example
@@ -605,7 +604,7 @@ var QRCode;
      *    width : 128,
      *    height : 128
      * });
-     * 
+     *
      * oQRCode.clear(); // Clear the QRCode.
      * oQRCode.makeCode("http://map.naver.com"); // Re-create the QRCode.
      *
@@ -616,7 +615,7 @@ var QRCode;
      * @param {Number} [vOption.height=256]
      * @param {String} [vOption.colorDark="#000000"]
      * @param {String} [vOption.colorLight="#ffffff"]
-     * @param {QRCode.CorrectLevel} [vOption.correctLevel=QRCode.CorrectLevel.H] [L|M|Q|H] 
+     * @param {QRCode.CorrectLevel} [vOption.correctLevel=QRCode.CorrectLevel.H] [L|M|Q|H]
      */
     QRCode = function (el, vOption) {
         this._htOption = {
@@ -661,7 +660,7 @@ var QRCode;
 
     /**
      * Make the QRCode
-     * 
+     *
      * @param {String} sText link data
      */
     QRCode.prototype.makeCode = function (sText) {
@@ -677,7 +676,7 @@ var QRCode;
      * Make the Image from Canvas element
      * - It occurs automatically
      * - Android below 3 doesn't support Data-URI spec.
-     * 
+     *
      * @private
      */
     QRCode.prototype.makeImage = function () {
@@ -697,4 +696,6 @@ var QRCode;
      * @name QRCode.CorrectLevel
      */
     QRCode.CorrectLevel = QRErrorCorrectLevel;
-})();
+
+    return QRCode;
+};
